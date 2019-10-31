@@ -1,6 +1,6 @@
 const handler = {
     get: function (target, prop) {
-        return (target[prop] ? target[prop] : 0 );
+        return (target[prop] ? target[prop] : 'Not found !!' );
     },
     set: function (target, prop, value) {
         if (prop === "password" ) {
@@ -19,6 +19,7 @@ const login = {
 const proxy = new Proxy(login, handler);
 console.log(proxy.username); // somename 
 console.log(proxy.password); // 123456
+console.log(proxy.email); // Not found !!
 
 proxy.password = "1234";  //password should be 6 characters or more
 console.log(proxy.password); // 1234
